@@ -11,13 +11,12 @@ export async function loadData() {
     extractLyrics(chanson);
 }
 
-let words = [];
 
 function extractLyrics(chanson) {
     let lyrics = chanson.plainLyrics;
     console.log("splitting...");
     let verses = lyrics.split("\n")
-    //let words = [];
+    let words = [];
     for(let i=0; i<verses.length; i++) {
         words.push(verses[i].toLowerCase().match(/\b[\w'-]+\b/g) || []);
     }
