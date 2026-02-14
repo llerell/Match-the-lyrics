@@ -3,8 +3,8 @@ import { loadData, showNextVerse } from "../../api/fetchLyrics.js"
 import { inputLyric } from "./utils/lyricsProcessor.js"
 
 
-export function Game(){
-    const [count, setCount] = useState(0)
+function Game(){
+    
     return (
     <>
         <div>
@@ -12,11 +12,17 @@ export function Game(){
       </div>
       <h1></h1>
       <div className="card">
-        {/*<input type="text" className='quizInput' onChange={handleWordInput}></input>*/}
-        <button onClick={() => loadData()}>
+        <input type="text" className='quizInput' onChange={() => inputLyric()}></input>
+        <button 
+        onClick={
+            () => loadData()
+        }>
           Start
         </button>
-        <button onClick={() => showNextVerse()}>
+        <button 
+        onClick={
+            () => showNextVerse()
+            }>
           Next verse
         </button>
         <button onClick={() => showNextWord()}>
@@ -30,3 +36,5 @@ export function Game(){
     </>
   )
 }
+
+export default Game
