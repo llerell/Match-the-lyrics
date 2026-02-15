@@ -4,7 +4,19 @@ export function extractLyrics(chanson) {
     let words = new Set;
     words = new Set(lyrics.toLowerCase().match(/\b[\w'-]+\b/g));
     return words
+}
 
+
+export function extractVerses(chanson) {
+    let lyrics = chanson.plainLyrics;
+    let verses = lyrics.split("\n");
+    let versesElements = []; // stocke les mots, les espaces et la ponctuation 
+    for (let i=0; i<verses.length; i++) {
+        let element = verses[i].match(/\b[\w'-]+\b|[^\w\s]|[\s]/g);
+        versesElements.push(element)
+    }
+    return versesElements;
+}
 
     /*
 
@@ -41,5 +53,3 @@ export function extractLyrics(chanson) {
     }
     
 */
- ;
-}
