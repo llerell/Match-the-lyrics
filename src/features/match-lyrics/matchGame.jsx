@@ -4,6 +4,10 @@ import { extractCleanedLyrics, extractCompleteVerses } from "./utils/lyricsProce
 import { LyricInput } from "./components/lyricinput.jsx"
 import { SongDisplay } from "./components/songdisplay.jsx"
 
+/**
+ * Handles game logic and visuals.
+ * @returns main Game component.
+ */
 function Game(){
 
     const [guessedWords, setGuessedWords] = useState([]);

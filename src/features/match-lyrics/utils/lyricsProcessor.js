@@ -1,3 +1,10 @@
+// le fichier entier pourrait être modifié pour améliorer la réusabilité.
+
+/**
+ * 
+ * @param {*} chanson Promise containing a song.
+ * @returns A set of all words found in the song
+ */
 export function extractCleanedLyrics(chanson) {
     let lyrics = chanson.plainLyrics;
     console.log("splitting...");
@@ -6,51 +13,19 @@ export function extractCleanedLyrics(chanson) {
     return words
 }
 
-
+/**
+ * 
+ * @param {*} chanson Promise containing a song.
+ * @returns Array of verses; each verse being an array of words, punctuation and whitespaces.
+ */
 export function extractCompleteVerses(chanson) {
     let lyrics = chanson.plainLyrics;
     let verses = lyrics.split("\n");
     let versesElements = []; // stocke les mots, les espaces et la ponctuation 
     for (let i=0; i<verses.length; i++) {
-        let element = verses[i].match(/\b[\w'-]+\b|[^\w\s]|[\s]/g);
+        let element = verses[i].match(/\b[\w'-]+\b|[^\w]/g); // mots ou non-mots (espaces et ponctuation)
         versesElements.push(element)
     }
     console.log(versesElements)
     return versesElements;
 }
-
-    /*
-
-    let verses = lyrics.split("\n")
-    for(let i=0; i<verses.length; i++) {
-        words.add(verses[i].toLowerCase().match(/\b[\w'-]+\b/g) || []);
-    }
-    console.log("split");
-
-    
-    let list = document.getElementById("lyrics");
-
-    for(let i=0; i<words.length; i++) {
-        const verse = document.createElement('div');
-        verse.className = "verse";
-        verse.id = `verse:${i}`;
-
-        for(let j=0; j<words[i].length; j++) {
-            const word = document.createElement('div');
-            word.className = 'word';
-            word.id = `word:${i}:${j}`;
-            word.textContent = words[i][j];
-            //word.style.visibility = "hidden";
-        
-            verse.appendChild(word);
-        }
-
-        verse.style.visibility = "hidden";
-
-        list.appendChild(verse);
-        
-        //showLyrics(words[i]);
-        
-    }
-    
-*/

@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Game from "./features/match-lyrics/matchGame.jsx"
 
+// Laissé pour qu'on puisse se servir des routers.
+// Sinon cette fonction ne rajoute qu'une couche inutile. 
 function App() {
   return (<Game/>)
 }
