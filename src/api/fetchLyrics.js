@@ -38,7 +38,6 @@ function showLyrics(line) {
 }
 
 let ind_verse = 0;
-let ind_word = 0;
 
 export function showNextVerse(words) {
     let verse = document.getElementById(`verse:${ind_verse}`);
@@ -51,14 +50,4 @@ export function showNextVerse(words) {
     }
     ind_verse++;
 }
-
-/* NEEDED ?
-export function showNextWord() {
-    if(ind_word < words[ind_verse].length) {
-        let word = document.getElementById(`word:${ind_verse}:${ind_word}`);
-        
-    }
-
-}
-*/
 

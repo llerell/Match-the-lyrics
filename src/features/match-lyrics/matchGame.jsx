@@ -38,9 +38,11 @@ function Game(){
     }, []); // [] pour que ça ne se lance qu'une fois au montage du composant
 
     return (
-    <>
         <div className="card">
+
+            {/* A remplacer par une vraie page d'erreur */}
             {error && <p className="error">{error}</p> }
+
 			<LyricInput
 				guess={guess}
 				setGuess={setGuess}
@@ -54,13 +56,7 @@ function Game(){
 				guessedWords={guessedWords}
 				verses={verses}
 			/>
-			{/*
-            <button onClick={() => showNextVerse()}>Next verse</button>
-            <button onClick={() => showNextWord()}>Next word</button>
-			*/}
         </div>
-
-    </>
   )
 }
 

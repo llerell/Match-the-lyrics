@@ -4,6 +4,8 @@ import {React} from "react";
 export function LyricInput({guessedWords, lyricsSet, setGuessedWords, guess, setGuess, isLoading}){
     // Utilisation des props pour accéder à l'état et aux fonctions de mise à jour du composant parent.
     // -> evite les appels d'une fonction prenant tous ces arguments. 
+
+    // TODO? vraie page de chargement
     if (isLoading){
         return <p>Loading...</p>
     }
