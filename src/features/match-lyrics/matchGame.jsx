@@ -1,50 +1,55 @@
-
 import { loadData, showNextVerse } from "../../api/fetchLyrics.js"
 import { guessLyric } from "./components/lyricinput.jsx"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {extractLyrics} from "./utils/lyricsProcessor.js"
 
 
 function Game(){
-    try {
-      
-    const lyricSet = loadData();
     const [guessedWords, setGuessedWords] = useState([]);
-    } catch (error) {
-      console.log("Error loading data:", error);
-    }
+    const [lyricsSet, setLyricsSet] = useState(null);
+	const [guess, setGuess] = useState("");
+    const [error, setError] = useState(null);
 
-    for (let i=0; i<lyricSet.length; i++){
-        console.log(lyricSet[i]);
-    }
+    useEffect(() => {
+        async function fetchLyrics() {
+            try {
+                const chanson = await loadData(1);
+                const lyrics = extractLyrics(chanson);
+                console.log("Successfully loaded data");
+                setLyricsSet(lyrics);
+				console.log("Lyrics set:", lyrics);
+            } catch (err) {
+                setError("Error loading data:", err);
+            }
+        }
+        fetchLyrics();
+    }, []); // [] pour que ça ne se lance qu'une fois au montage du composant
 
     return (
     <>
-        <div>
-        
-      </div>
-      <h1></h1>
-      <div className="card">
-        <input type="text" className='quizInput' onChange={e => guessLyric(e, guessedWords, lyricSet, setGuessedWords)}></input>
-        <button 
-        onClick={
-            () => loadData()
-        }>
-          Start
-        </button>
-        <button 
-        onClick={
-            () => showNextVerse()
-            }>
-          Next verse
-        </button>
-        <button onClick={() => showNextWord()}>
-          Next word
-        </button>
-      </div>
+        <div className="card">
+            {error && <p className="error">{error}</p> }
+            <input
+                type="text"
+				value={guess}
+                className="quizInput"
+                disabled={!lyricsSet} // Désactive l'input tant que les paroles ne sont pas chargées
+                onChange={(e) => {
+					setGuess(e.target.value);
+                    if (lyricsSet) {
+                        guessLyric(e, guessedWords, lyricsSet, setGuessedWords, guess, setGuess);
+                    } else {
+                        console.log("Lyrics not loaded yet");
+                    }
+                }}
+            ></input>
+			{/*
+            <button onClick={() => showNextVerse()}>Next verse</button>
+            <button onClick={() => showNextWord()}>Next word</button>
+			*/}
+        </div>
 
-      <div id="lyrics">
-
-      </div>
+        <div id="lyrics"></div>
     </>
   )
 }

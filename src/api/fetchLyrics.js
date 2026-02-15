@@ -1,17 +1,21 @@
-
 async function fetchData(id) {
     console.log("fetching...");
-    let promise = await fetch(`https://lrclib.net//api/get/${id}`);
-    console.log("fetched");
-    return await promise.json();
+    try {
+        const response = await fetch(`https://lrclib.net/api/get/${id}`);
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status} ${response.statusText}`);
+        }
+        console.log("fetched");
+        return await response.json();
+    } catch (error) {
+        console.error("Failed to fetch data:", error);
+        throw error; // Re-throw the error to handle it in the calling function
+    }
 }
 
 export async function loadData() {
-    let chanson = await fetchData(1);
-    return extractLyrics(chanson);
+     return await fetchData(1);
 }
-
-
 
 function showLyrics(line) {
     let list = document.getElementById("lyrics");

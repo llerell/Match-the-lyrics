@@ -1,16 +1,20 @@
 export function extractLyrics(chanson) {
     let lyrics = chanson.plainLyrics;
     console.log("splitting...");
-    let verses = lyrics.split("\n")
     let words = new Set;
+    words = new Set(lyrics.toLowerCase().match(/\b[\w'-]+\b/g));
+    return words
+
+
+    /*
+
+    let verses = lyrics.split("\n")
     for(let i=0; i<verses.length; i++) {
-        words.push(verses[i].toLowerCase().match(/\b[\w'-]+\b/g) || []);
+        words.add(verses[i].toLowerCase().match(/\b[\w'-]+\b/g) || []);
     }
     console.log("split");
-    console.log(words);
 
-    return words;
-    /*
+    
     let list = document.getElementById("lyrics");
 
     for(let i=0; i<words.length; i++) {
@@ -35,5 +39,7 @@ export function extractLyrics(chanson) {
         //showLyrics(words[i]);
         
     }
-    */
+    
+*/
+ ;
 }
