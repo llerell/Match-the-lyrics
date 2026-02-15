@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { loadData } from "../../api/fetchLyrics.js"
-import { extractLyrics, extractVerses } from "./utils/lyricsProcessor.js"
+import { extractCleanedLyrics, extractCompleteVerses } from "./utils/lyricsProcessor.js"
 import { LyricInput } from "./components/lyricinput.jsx"
 import { SongDisplay } from "./components/songdisplay.jsx"
 
@@ -19,8 +19,8 @@ function Game(){
 
 				setIsLoading(true);
                 const song = await loadData(1);
-                const lyrics = extractLyrics(song);
-				const verses = extractVerses(song);
+                const lyrics = extractCleanedLyrics(song);
+				const verses = extractCompleteVerses(song);
                 setLyricsSet(lyrics);
 				setVerses(verses);
 

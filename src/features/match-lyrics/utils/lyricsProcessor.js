@@ -1,4 +1,4 @@
-export function extractLyrics(chanson) {
+export function extractCleanedLyrics(chanson) {
     let lyrics = chanson.plainLyrics;
     console.log("splitting...");
     let words = new Set;
@@ -7,7 +7,7 @@ export function extractLyrics(chanson) {
 }
 
 
-export function extractVerses(chanson) {
+export function extractCompleteVerses(chanson) {
     let lyrics = chanson.plainLyrics;
     let verses = lyrics.split("\n");
     let versesElements = []; // stocke les mots, les espaces et la ponctuation 
@@ -15,6 +15,7 @@ export function extractVerses(chanson) {
         let element = verses[i].match(/\b[\w'-]+\b|[^\w\s]|[\s]/g);
         versesElements.push(element)
     }
+    console.log(versesElements)
     return versesElements;
 }
 
