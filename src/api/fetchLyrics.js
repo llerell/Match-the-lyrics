@@ -8,7 +8,7 @@ async function fetchData(id) {
 
 export async function loadData() {
     let chanson = await fetchData(1);
-    extractLyrics(chanson);
+    return extractLyrics(chanson);
 }
 
 
@@ -36,7 +36,7 @@ function showLyrics(line) {
 let ind_verse = 0;
 let ind_word = 0;
 
-export function showNextVerse() {
+export function showNextVerse(words) {
     let verse = document.getElementById(`verse:${ind_verse}`);
     if (verse != null){
         verse.style.visibility = "visible";
