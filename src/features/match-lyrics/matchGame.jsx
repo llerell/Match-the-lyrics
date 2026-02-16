@@ -22,7 +22,7 @@ function Game(){
             try {
 
 				setIsLoading(true);
-                const song = await loadData(1);
+                const song = await loadData();
                 const lyrics = extractCleanedLyrics(song);
 				const verses = extractCompleteVerses(song);
                 setLyricsSet(lyrics);
