@@ -6,8 +6,8 @@ async function fetchData(id) {
     return await promise.json();
 }
 
-export async function loadData() {
-    let chanson = await fetchData(1);
+export async function loadData(id) {
+    let chanson = await fetchData(id);
     extractLyrics(chanson);
 }
 
