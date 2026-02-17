@@ -1,36 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { loadData, showNextVerse } from "./script.js"
+import Game from "./features/match-lyrics/matchGame.jsx"
 
-
+// Laissé pour qu'on puisse se servir des routers.
+// Sinon cette fonction ne rajoute qu'une couche inutile. 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        
-      </div>
-      <h1></h1>
-      <div className="card">
-        <button onClick={() => loadData()}>
-          Start
-        </button>
-        <button onClick={() => showNextVerse()}>
-          Next verse
-        </button>
-        <button onClick={() => showNextWord()}>
-          Next word
-        </button>
-      </div>
-
-      <div id="lyrics">
-
-      </div>
-    </>
-  )
+  return (<Game/>)
 }
 
 export default App
