@@ -1,4 +1,4 @@
-async function fetchData(id) {
+export async function fetchData(id) {
     console.log("fetching...");
     try {
         const response = await fetch(`https://lrclib.net/api/get/${id}`);
@@ -13,8 +13,8 @@ async function fetchData(id) {
     }
 }
 
-export async function loadData() {
-     return await fetchData(1);
+export async function loadData(id) {
+    return await fetchData(id);
 }
 
 function showLyrics(line) {

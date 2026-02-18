@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
-import { loadData } from "../../api/fetchLyrics.js"
-import { extractCleanedLyrics, extractCompleteVerses } from "./utils/lyricsProcessor.js"
-import { LyricInput } from "./components/lyricinput.jsx"
-import { SongDisplay } from "./components/songdisplay.jsx"
+import { loadData, fetchData } from "../api/fetchLyrics.js"
+import { extractCleanedLyrics, extractCompleteVerses } from "../features/match-lyrics/utils/lyricsProcessor.js"
+import { LyricInput } from "../features/match-lyrics/components/lyricinput.jsx"
+import { SongDisplay } from "../features/match-lyrics/components/songdisplay.jsx"
+import { useParams } from "react-router";
+
 
 /**
  * Handles game logic and visuals.
  * @returns main Game component.
  */
 function Game(){
+
+    let id = useParams().id;    // Récupère le paramètre id dans l'URL
 
     const [guessedWords, setGuessedWords] = useState([]);
     const [lyricsSet, setLyricsSet] = useState(null);
@@ -22,7 +26,7 @@ function Game(){
             try {
 
 				setIsLoading(true);
-                const song = await loadData();
+                const song = await fetchData(id);
                 const lyrics = extractCleanedLyrics(song);
 				const verses = extractCompleteVerses(song);
                 setLyricsSet(lyrics);
