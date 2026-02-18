@@ -17,8 +17,9 @@ export function LyricInput({guessedWords, lyricsSet, setGuessedWords, guess, set
         const value = e.target.value;
         setGuess(value);
         const word = value.toLowerCase(); 
-        // si on utilise la variable guess au lieu de value, le setguess prend trop de temps et le reste du code est donc réalisé avant que ce soit terminé.
-
+        // si on utilise la variable guess au lieu de value, 
+        // le setguess prend trop de temps et le reste du code est donc réalisé avant que la valeur soit modifiée.
+        // La valeur stockée et la valeur affichée sont deux valeurs séparées en React.
         if (lyricsSet.has(word)){
             if (!guessedWords.includes(word)){
                 setGuessedWords([...guessedWords, word]);

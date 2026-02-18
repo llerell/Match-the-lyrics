@@ -3,7 +3,7 @@
 /**
  * 
  * @param {*} chanson Promise containing a song.
- * @returns A set of all words found in the song
+ * @returns A Set of all words found in the song.
  */
 export function extractCleanedLyrics(chanson) {
     let lyrics = chanson.plainLyrics;

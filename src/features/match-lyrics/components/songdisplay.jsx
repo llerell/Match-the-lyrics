@@ -6,19 +6,24 @@
  * @returns display component
  */
 export function SongDisplay({lyricsSet, guessedWords, verses}) {
+    // Note: all variables act like booleans, that are true if they exist and false if null. 
+    // lyricsSet && {action} does the action if lyricsSet exists. 
     return (
         <div id="lyrics">
             {lyricsSet && verses.map((verse, verseIndex) => (
                 <div key={verseIndex} className="verse">
                     {verse && verse.map((pos, posIndex) => {
-                        const isWord = lyricsSet.has(pos.toLowerCase())
+                        const posLower = pos.toLowerCase();
 
+                        // alternative au Regex. 
+                        // has() est en O(1), donc ça ne change pas grand chose.
+                        const isWord = lyricsSet.has(pos)
                         // affiche les ponctuations, les espaces et les mots révélés
-                        const word = (!isWord || guessedWords.includes(pos.toLowerCase())) ? pos : "_".repeat(pos.length);
+                        const word = (!isWord || guessedWords.includes(posLower)) ? pos : "_".repeat(pos.length);
 
                         return <span
                                 key={posIndex} 
-                                className={isWord ? (guessedWords.includes(pos.toLowerCase()) ? "guessed" : "hidden") : "punctuation"} 
+                                className={isWord ? (guessedWords.includes(posLower) ? "guessed" : "hidden") : "punctuation"} 
                                 style={{ whiteSpace: "pre-wrap" }}>
                                     {word} 
                                 </span>

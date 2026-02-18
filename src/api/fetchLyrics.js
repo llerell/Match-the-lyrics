@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} id id of the song to fetch
+ * @returns Promise containing the song.
+ */
 async function fetchData(id) {
     console.log("fetching...");
     try {
@@ -13,6 +18,10 @@ async function fetchData(id) {
     }
 }
 
+/**
+ * 
+ * @returns Promise containing the song
+ */
 export async function loadData() {
      return await fetchData(1);
 }
