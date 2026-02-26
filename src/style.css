@@ -2,7 +2,7 @@
     --accent-color-1: #efaf00;
     --accent-color-2: #000000;
     --accent-color-3: #ffffff;
-    font-family: Nerko one, system-ui, sans-serif;
+    font-family: Nerko One, system-ui, sans-serif;
     background-color: var(--accent-color-1);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -131,4 +131,10 @@ input:hover {
 .artist-name {
     color: var(--accent-color-2);
     margin-top: 0px;
+}
+
+@font-face {
+  font-family: "Nerko One";
+  src: local("NerkoOne"),
+    url("assets/NerkoOne.ttf") format("truetype");
 }
