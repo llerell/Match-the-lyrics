@@ -9,7 +9,7 @@ export function extractCleanedLyrics(chanson) {
     let lyrics = chanson.plainLyrics;
     console.log("splitting...");
     let words = new Set;
-    words = new Set(lyrics.toLowerCase().match(/\b[\w'-]+\b/g));
+    words = new Set(lyrics.toLowerCase().match(/\p{L}+/gu));
     return words
 }
 
@@ -23,7 +23,7 @@ export function extractCompleteVerses(chanson) {
     let verses = lyrics.split("\n");
     let versesElements = []; // stocke les mots, les espaces et la ponctuation 
     for (let i=0; i<verses.length; i++) {
-        let element = verses[i].match(/\b[\w'-]+\b|[^\w]/g); // mots ou non-mots (espaces et ponctuation)
+        let element = verses[i].match(/\p{L}+|[^\p{L}]/gu); // mots ou non-mots (espaces et ponctuation)
         versesElements.push(element)
     }
     console.log(versesElements)

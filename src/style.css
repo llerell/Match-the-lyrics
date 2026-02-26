@@ -1,0 +1,134 @@
+:root {
+    --accent-color-1: #efaf00;
+    --accent-color-2: #000000;
+    --accent-color-3: #ffffff;
+    font-family: Nerko one, system-ui, sans-serif;
+    background-color: var(--accent-color-1);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background-color: var(--accent-color-1);
+    color: var(--accent-color-3);
+}
+
+body {
+    padding: 50px;
+    place-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    margin: 0px;
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: var(--accent-color-3);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+button {
+    margin: 20px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: var(--accent-color-1);
+    color: var(--accent-color-2);
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+}
+button:hover {
+    border-color: var(--accent-color-2);
+    transform: scale(1.05);
+}
+
+input {
+    margin: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid;
+    border-color: var(--accent-color-2);
+    padding: 0.5em 1em;
+    font-size: 1em;
+    font-family: inherit;
+    width: 75%;
+    background-color: var(--accent-color-3);
+    color: var(--accent-color-2);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+input:hover {
+    box-shadow: 0px 0px 5px var(--accent-color-1);
+    border-color: var(--accent-color-1);
+}
+
+.entete {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    place-items: center;
+}
+
+.input-container {
+    background-color: var(--accent-color-3);
+    position: sticky;
+    top: 0;
+}
+
+.lyrics {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.empty-verse {
+    display: flex;
+    margin: 10px;
+}
+
+.verse {
+    display: flex;
+    margin: 5px;
+}
+
+.song-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.song-card {
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--accent-color-2);
+    transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor: pointer;
+    width: 100%;
+}
+.song-card:hover {
+    box-shadow: 0px 0px 5px var(--accent-color-1);
+    border: 2px solid var(--accent-color-1);
+    transform: scale(1.05);
+}
+
+.track-name {
+    font-size: 1.5em;
+    margin-bottom: 0px;
+}
+
+.album-name {
+    font-size: 0.8em;
+    color: var(--accent-color-1);
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.artist-name {
+    color: var(--accent-color-2);
+    margin-top: 0px;
+}

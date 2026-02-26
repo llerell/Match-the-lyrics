@@ -1,21 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
-import './index.css'
+import './style.css'
 import Root from './pages/root.jsx'
 import Search from './pages/search.jsx'
 import Game from './pages/matchGame.jsx'
-//import App from './App.jsx'
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
-
     },
 
     {
-        path: "searchSongs",
+        path: "search/:query",
         element: <Search />,
     },
 

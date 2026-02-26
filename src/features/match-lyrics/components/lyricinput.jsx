@@ -8,7 +8,6 @@ export function LyricInput({guessedWords, lyricsSet, setGuessedWords, guess, set
     // Utilisation des props pour accéder à l'état et aux fonctions de mise à jour du composant parent.
     // -> evite les appels d'une fonction prenant tous ces arguments. 
 
-    // TODO? vraie page de chargement
     if (isLoading){
         return <p>Loading...</p>
     }
@@ -25,21 +24,19 @@ export function LyricInput({guessedWords, lyricsSet, setGuessedWords, guess, set
                 console.log("Correct guess")
                 setGuess("");
             }
-        } else {
-            console.log("Input is not in song");
         }
     }
     return (
         <>
-            <input
-                type="text"
-				value={guess}
-                className="quizInput"
-                disabled={!lyricsSet} // Désactive l'input tant que les paroles ne sont pas chargées
-                onChange={(e) => {
-                    guessLyric(e);
-                }}
-            ></input>
+            <div className="input-container">
+                <input
+                    type="text"
+                    value={guess}
+                    className="input-lyric"
+                    disabled={!lyricsSet} // Désactive l'input tant que les paroles ne sont pas chargées
+                    placeholder="Entrer un mot..."
+                    onChange={(e) => {guessLyric(e);}}/>
+            </div>
         </>
     )
 }
