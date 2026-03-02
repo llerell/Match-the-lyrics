@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { loadData, fetchData } from "../api/fetchLyrics.js"
+import { fetchData } from "../api/fetchLyrics.js"
 import { extractCleanedLyrics, extractCompleteVerses } from "../features/match-lyrics/utils/lyricsProcessor.js"
 import { LyricInput } from "../features/match-lyrics/components/lyricinput.jsx"
 import { SongDisplay } from "../features/match-lyrics/components/songdisplay.jsx"
@@ -31,22 +31,24 @@ function Game(){
 				const verses = extractCompleteVerses(song);
                 setLyricsSet(lyrics);
 				setVerses(verses);
-
                 console.log("Successfully loaded data");
 
             } catch (err) {
+
                 setError("Error loading data: " + err.message);
 				console.log("Error loading data: " + err.message);
 
             } finally { // quel que soit le résultat
-				setIsLoading(false);
-			}
+
+                setIsLoading(false);
+
+            }
         }
         fetchLyrics();
     }, []); // [] pour que ça ne se lance qu'une fois au montage du composant
 
     return (
-        <div className="card">
+        <div>
 
             {/* A remplacer par une vraie page d'erreur */}
             {error && <p className="error">{error}</p> }
@@ -57,13 +59,21 @@ function Game(){
 				guessedWords={guessedWords}
 				setGuessedWords={setGuessedWords}
 				lyricsSet={lyricsSet}
-				isLoading={isLoading}
-			/>
-			<SongDisplay 
+				isLoading={isLoading}/>
+			
+            <SongDisplay 
 				lyricsSet={lyricsSet}
 				guessedWords={guessedWords}
-				verses={verses}
-			/>
+				verses={verses}/>
+
+            <button
+                onClick={() => {
+                    alert("Votre score est de " + guessedWords.length + " mots trouvés sur " + lyricsSet.size);
+                    setGuessedWords(Array.from(lyricsSet));
+                }}>
+                Afficher le reste des paroles
+            </button>
+            
         </div>
   )
 }
