@@ -5,11 +5,13 @@ import './style.css'
 import Root from './pages/root.jsx'
 import Search from './pages/search.jsx'
 import Game from './pages/matchGame.jsx'
+import ErrorPage from './pages/errorPage.jsx'
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        errorElement: <ErrorPage />,    // Ne s'affiche que pour les erreurs liées aux routes (mauvais URL par exemple)
     },
 
     {
