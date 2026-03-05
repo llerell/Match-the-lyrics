@@ -9,7 +9,7 @@ export default function ErrorPage() {
             <h1 className="error">
                 {error.status + " " + (error.statusText || error.message)}
             </h1>
-            <p> Sorry, an unexpected error has occurred. </p>
+            <p> Une erreur inattendue s'est produite. </p>
         </div>
     );
 }
