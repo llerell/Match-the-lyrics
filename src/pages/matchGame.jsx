@@ -35,7 +35,7 @@ function Game(){
 
             } catch (err) {
 
-                setError("Error loading data: " + err.message);
+                setError("Erreur de chargement des paroles: " + err.message);
 				console.log("Error loading data: " + err.message);
 
             } finally { // quel que soit le résultat
