@@ -1,16 +1,20 @@
-# React + Vite
+# Match the lyrics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Logo](src/assets/icon.png)
 
-Currently, two official plugins are available:
+## Principe
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Match the Lyrics est un jeu en ligne consistant à retrouver les paroles d'une chanson sélectionnée.
+Pour y jouer, il suffit de chercher une chanson ou un artiste grâce à la barre de recherche de la page d'accueil, puis de sélectionner la chanson de son choix.
 
-## React Compiler
+Une fois la chanson sélectionnée, le joueur peut en deviner les paroles en écrivant les mots dans la barre prévue à cet effet. S'il est juste, le mot est automatiquement détecté et les paroles sont complétées.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Quand le joueur a terminé ou souhaite obtenir la solution, il peut appuyer sur le bouton en bas de la page pour obtenir son score et afficher le reste des paroles.
 
-## Expanding the ESLint configuration
+## API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+L'API utilisée pour ce site est [LRCLIB](https://lrclib.net/), qui donne accès à une base de données libre de paroles de chansons.
+
+## Lancement
+
+Pour faire tourner le site localement, il faut se placer dans le dossier du projet et lancer la commande ```npm run dev```, puis ouvrir le lien affiché par la commande.
