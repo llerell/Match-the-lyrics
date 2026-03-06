@@ -11,18 +11,19 @@ export default function Root() {
             </div>
 
             <div>
-                <input type="text" placeholder="Rechercher..."/>
+                <input type="text" id="track-name" placeholder="Rechercher dans le nom..."/>
+                <input type="text" id="artist-name" placeholder="Rechercher par artiste..."/>
             </div>
 
             <button
                 onClick={() => {
-                    const value = document.querySelector("input").value;
-                    if (value == "") {
+                    const trackName = document.getElementById("track-name").value;
+                    const artistName = document.getElementById("artist-name").value;
+                    if (trackName == "" && artistName == "") {
                         alert("La recherche ne peut pas être vide.");
                     } else {
-                    window.location.href="/search/"+document.querySelector("input").value;
-                    }
-                }}
+                    window.location.href="/search/"+trackName+"&"+artistName
+                    }}}
                 className="search-button">
                 Rechercher
             </button>

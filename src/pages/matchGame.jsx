@@ -16,6 +16,7 @@ function Game(){
 
     const [guessedWords, setGuessedWords] = useState([]);
     const [lyricsSet, setLyricsSet] = useState(null);
+    const [songName, setSongName] = useState("");
 	const [guess, setGuess] = useState("");
     const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -27,8 +28,10 @@ function Game(){
 
 				setIsLoading(true);
                 const song = await fetchData(id);
+                const name = song.trackName + ", " + song.artistName;
                 const lyrics = extractCleanedLyrics(song);
 				const verses = extractCompleteVerses(song);
+                setSongName(name);
                 setLyricsSet(lyrics);
 				setVerses(verses);
                 console.log("Successfully loaded data");
@@ -50,8 +53,9 @@ function Game(){
     return (
         <div>
 
-            {/* A remplacer par une vraie page d'erreur */}
             {error && <p className="error">{error}</p> }
+
+            <h1> {songName} </h1>
 
 			<LyricInput
 				guess={guess}

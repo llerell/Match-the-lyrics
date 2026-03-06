@@ -1,11 +1,16 @@
 export function parseQuery(query) {
     // TODO: changer les %20 en + ?
-    return `q=${query}`;
+    let track_name = query.split("&")[0];
+    let artist_name = query.split("&")[1];
+    if(track_name == "") {
+        return `q=${artist_name}`;
+    } else {
+        return `artist_name=${artist_name}&track_name=${track_name}`;
+    }
 }
 
 export async function searchSongs(query) {
     console.log("searching...");
-    console.log("query:", parseQuery(query));
     try {
         const response = await fetch(`https://lrclib.net/api/search?${parseQuery(query)}`);
         if (!response.ok) {
