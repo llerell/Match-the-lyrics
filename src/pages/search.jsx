@@ -27,7 +27,6 @@ function Search() {
             } finally { // quel que soit le résultat
 
                 setIsLoading(false);
-                console.log("Songs list:", songsList);
             }
         }
         fetchSongs();
@@ -36,7 +35,7 @@ function Search() {
     return (
         <div>
             <p>Résultats de la recherche pour :</p>
-            <p>{query}</p>
+            <p>{query.split("&")[0]} {query.split("&")[1]}</p>
 
             {songsList.length ? (    // Si il y a des chansons
                 <div className="song-list">

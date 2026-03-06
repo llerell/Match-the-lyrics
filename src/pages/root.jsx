@@ -17,8 +17,13 @@ export default function Root() {
 
             <button
                 onClick={() => {
-                    window.location.href="/search/"+document.getElementById("track-name").value+"&"+document.getElementById("artist-name").value
-                }}
+                    const trackName = document.getElementById("track-name").value;
+                    const artistName = document.getElementById("artist-name").value;
+                    if (trackName == "" && artistName == "") {
+                        alert("La recherche ne peut pas être vide.");
+                    } else {
+                    window.location.href="/search/"+trackName+"&"+artistName
+                    }}}
                 className="search-button">
                 Rechercher
             </button>

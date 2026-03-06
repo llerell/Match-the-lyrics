@@ -26,6 +26,5 @@ export function extractCompleteVerses(chanson) {
         let element = verses[i].match(/\p{L}+|[^\p{L}]/gu); // mots ou non-mots (espaces et ponctuation)
         versesElements.push(element)
     }
-    console.log(versesElements)
     return versesElements;
 }

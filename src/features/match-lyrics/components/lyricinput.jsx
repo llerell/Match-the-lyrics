@@ -21,7 +21,6 @@ export function LyricInput({guessedWords, lyricsSet, setGuessedWords, guess, set
         if (lyricsSet.has(word)){
             if (!guessedWords.includes(word)){
                 setGuessedWords([...guessedWords, word]);
-                console.log("Correct guess")
                 setGuess("");
             }
         }
