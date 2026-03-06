@@ -55,7 +55,7 @@ function Search() {
                 </div>
             ) : (   // Si il n'y a pas de chansons on affiche qu'il n'y en a pas
                 <p>
-                    <i> No song </i>
+                    <i> La recherche n'a retourné aucun résultat </i>
                 </p>
             )}
 
